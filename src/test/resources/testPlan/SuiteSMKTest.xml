@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Assurity - API" verbose="1" configfailurepolicy="continue">
+    <listeners>
+        <listener class-name="com.assurity.config.TestNGListener"/>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+    <test name="API">
+        <groups>
+            <define name="smk">
+                <include name="BAT"/>
+            </define>
+            <run>
+                <include name="smk"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.assurity.test.AssurityTest"/>
+        </classes>
+    </test>
+</suite>
