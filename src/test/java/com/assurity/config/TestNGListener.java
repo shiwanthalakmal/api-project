@@ -27,6 +27,8 @@ public class TestNGListener implements ITestListener, ISuiteListener {
     @Override
     public void onTestStart(ITestResult result) {
         API.response = RestAssured.get("https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false");
+//        API.response = RestAssured.get("http://services.groupkt.com/country/get/all");
+
         strLoggerMsg = ("Test Started Running: " + "---- " + result.getMethod().getMethodName() + " ---- at:" + result.getStartMillis());
         log.info(strLoggerMsg);
 
