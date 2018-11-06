@@ -1,0 +1,18 @@
+# File-based project format:
+*.iws
+*.ipr
+*.iml
+error.log
+info.log
+
+# generated folders
+cambio-taf-core/
+cambio-taf-gui-element-core/
+cambio-taf-utils/
+cambio-taf-api-support-core/
+cambio-taf-web-element-core/
+cambio-taf-projects/
+cambio-taf-support-runner/
+
+# auto generated folders
+target/
