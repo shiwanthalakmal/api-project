@@ -141,7 +141,7 @@
     <!--Profiles-->
     <profiles>
         <profile>
-            <id>api_smk</id>
+            <id>demo</id>
             <build>
                 <plugins>
                     <plugin>
@@ -159,43 +159,5 @@
                 </plugins>
             </build>
         </profile>
-        <profile>
-            <id>api_reg</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.18.1</version>
-                        <configuration>
-                            <testFailureIgnore>true</testFailureIgnore>
-                            <skipTests>false</skipTests>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/testPlan/SuiteREGTest.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>api_all</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.18.1</version>
-                        <configuration>
-                            <testFailureIgnore>true</testFailureIgnore>
-                            <skipTests>false</skipTests>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/testPlan/SuiteALLTest.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+      </profiles>
 </project>
