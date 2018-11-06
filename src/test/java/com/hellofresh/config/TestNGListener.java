@@ -1,7 +1,5 @@
-package com.assurity.config;
+package com.hellofresh.config;
 
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.response.Response;
 import org.apache.log4j.Logger;
 import org.testng.*;
 
@@ -9,8 +7,8 @@ import org.testng.*;
  * TestNGListener.java -  TestNge event listener
  *
  * @author Shiwantha Lakmal
- * @version 1.0-SNAPSHOT Last modified 11_23_2015
- * @since 11/23/2015.
+ * @version 1.0-SNAPSHOT Last modified 11_07_2018
+ * @since 11/07/2018.
  */
 public class TestNGListener implements ITestListener, ISuiteListener {
 
@@ -26,9 +24,6 @@ public class TestNGListener implements ITestListener, ISuiteListener {
      */
     @Override
     public void onTestStart(ITestResult result) {
-        API.response = RestAssured.get("https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false");
-//        API.response = RestAssured.get("http://services.groupkt.com/country/get/all");
-
         strLoggerMsg = ("Test Started Running: " + "---- " + result.getMethod().getMethodName() + " ---- at:" + result.getStartMillis());
         log.info(strLoggerMsg);
 

@@ -1,4 +1,4 @@
-package com.assurity.config;
+package com.hellofresh.config;
 
 import com.jayway.restassured.response.Response;
 

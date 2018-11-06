@@ -1,11 +1,12 @@
-package com.assurity.test;
+package com.hellofresh.test;
 
 import static com.jayway.restassured.path.json.JsonPath.from;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.assurity.config.API;
+import com.hellofresh.config.API;
+import com.hellofresh.config.DataSupporter;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
@@ -16,12 +17,17 @@ import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SampleTest
+public class HelloFreshAPITest
 {
-  final static Logger log = Logger.getLogger(SampleTest.class);
+  final static Logger log = Logger.getLogger(HelloFreshAPITest.class);
 
-  @Test
-  public void test_1()
+  /**
+   * The output of the code passes the assertion functional nun-functional verification.
+   * Verify api response comes within given time period and contains Can Re-List records
+   * Q: Get all countries and validate that US, DE and GB were returned in the response
+   */
+  @Test(groups = {"BAT"})
+  public void get_all_countries_and_verify_given_content()
   {
     API.response = RestAssured.get("http://services.groupkt.com/country/get/all");
     API.response.then().log().ifValidationFails().time(Matchers.lessThan(5L), TimeUnit.SECONDS).statusCode(200).assertThat();
@@ -33,8 +39,13 @@ public class SampleTest
     Assert.assertTrue(countryNameList.get(0).equals("US"), "Error ! Country not available for code : US");
   }
 
-  @Test
-  public void test_2()
+  /**
+   * The output of the code passes the assertion functional nun-functional verification.
+   * Verify api response comes within given time period and contains Can Re-List records
+   * Q: Get each country (US, DE and GB) individually and validate the response
+   */
+  @Test(groups = {"BAT"})
+  public void get_single_country_and_verify_response_content()
   {
     API.response = RestAssured.get("http://services.groupkt.com/country/get/iso2code/US");
     API.response.then().log().ifValidationFails().time(Matchers.lessThan(5L), TimeUnit.SECONDS).statusCode(200).assertThat();
@@ -50,8 +61,13 @@ public class SampleTest
     Assert.assertTrue(from(API.response.asString()).get("RestResponse.result.alpha3_code").toString().contains("USA"), "Error ! Alpha 3 is not available");
   }
 
-  @Test
-  public void test_3()
+  /**
+   * The output of the code passes the assertion functional nun-functional verification.
+   * Verify api response comes within given time period and contains Can Re-List records
+   * Q: Try to get information for inexistent countries and validate the response
+   */
+  @Test(groups = {"BAT"})
+  public void get_non_exsiting_country_and_verify_response_content()
   {
     API.response = RestAssured.get("http://services.groupkt.com/country/get/iso2code/KD");
     API.response.then().log().ifValidationFails().time(Matchers.lessThan(5L), TimeUnit.SECONDS).statusCode(200).assertThat();
@@ -63,7 +79,12 @@ public class SampleTest
     Assert.assertTrue(successMessageList.get(0).contains("No matching country found for requested code"), "Error ! Country not available for code : KD");
   }
 
-  @Test
+  /**
+   * The output of the code passes the assertion functional nun-functional verification.
+   * Verify api response comes within given time period and contains Can Re-List records
+   * Q: Validate new country addition using POST(it will not work now, but no worries)
+   */
+  @Test(groups = {"BAT"})
   public void test_4()
   {
     String end_point = "/register";
