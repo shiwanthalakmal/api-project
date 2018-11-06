@@ -85,7 +85,7 @@ public class HelloFreshAPITest
    * Q: Validate new country addition using POST(it will not work now, but no worries)
    */
   @Test(groups = {"BAT"})
-  public void test_4()
+  public void new_country_adding_using_post_request()
   {
     String end_point = "/register";
 
